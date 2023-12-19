@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 30),
             ),
             Text(
-              _steps.toString(),
+              _steps,
               style: const TextStyle(fontSize: 60),
             ),
             const Divider(
