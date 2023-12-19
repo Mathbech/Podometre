@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-String formatDate(DateTime d) {
-  return d.toString().substring(0, 19);
-}
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
