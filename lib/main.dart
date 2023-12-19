@@ -1,19 +1,25 @@
-import './screen/homepage.dart';
 import 'package:flutter/material.dart';
+
+import './screen/setting.dart';
+import './screen/homepage.dart';
 
 void main() {
   runApp(const MainApp());
 }
-
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+
+    return MaterialApp(
       title: 'Hello World!',
-      home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/settings': (context) => const SettingsPage(),
+      },
     );
   }
 }
