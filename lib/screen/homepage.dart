@@ -1,11 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:pedometer/pedometer.dart';
 
-String formatDate(DateTime d) {
-  return d.toString().substring(0, 19);
-}
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -96,30 +93,41 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Nombre de pas:'),
-            Text(
-              _steps,
-              style: const TextStyle(fontSize: 30),
+            const Text(
+              'Nombre de pas',
+              style: TextStyle(fontSize: 30),
             ),
-            const Text('Activité:'),
+            Text(
+              _steps.toString(),
+              style: const TextStyle(fontSize: 60),
+            ),
+            const Divider(
+              height: 100,
+              thickness: 0,
+              color: Colors.white,
+            ),
+            const Text(
+              'Satut d\'activité',
+              style: TextStyle(fontSize: 30),
+            ),
             Icon(
-              _status == 'walking'
+              _status == 'marche'
                   ? Icons.directions_walk
-                  : Icons.accessibility_new,
-              size: 50.0,
+                  : _status == 'no'
+                      ? Icons.accessibility_new
+                      : Icons.error,
+              size: 100,
             ),
             Center(
-                child: Text(_status,
-                    style: _status == 'walking'
-                        ? const TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold)
-                        : const TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold)))
+              child: Text(
+                _status,
+                style: _status == 'marche' || _status == 'no'
+                    ? const TextStyle(fontSize: 30)
+                    : const TextStyle(fontSize: 20, color: Colors.red),
+              ),
+            )
           ],
         ),
       ),

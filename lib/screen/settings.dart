@@ -28,8 +28,8 @@ class _SettingsPageState extends State<SettingsPage> {
         ],
       ),
       body: Center(
-        child: CustomButton(text: 'Appui ici', onPressed: () {
-          Navigator.pushNamed(context, '/');
+        child: CustomButton(text: 'Définir l\'objectif', onPressed: () {
+          const SnackBar(content: Text('Objectif défini avec succès !'));
         }),
       ),
     );
