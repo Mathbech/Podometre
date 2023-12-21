@@ -1,8 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pedometer/pedometer.dart';
+import 'dart:async';
+import '../function/ResetStepDaily.dart';
 
-
+String formatDate(DateTime d) {
+  return d.toString().substring(0, 19);
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,43 +19,33 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Stream<StepCount> _stepCountStream;
-  late Stream<PedestrianStatus> _pedestrianStatusStream;
-  String _status = '?', _steps = '?';
+  String _steps = '0';
+  late DateTime _lastResetDate;
 
   @override
   void initState() {
     super.initState();
+    _lastResetDate = DateTime.now();
     initPlatformState();
+    scheduleDailyReset(resetSteps);
+  }
+
+  void resetSteps() {
+    setState(() {
+      _steps = '0';
+      _lastResetDate = DateTime.now();
+    });
+    scheduleDailyReset(resetSteps);
   }
 
   void onStepCount(StepCount event) {
     if (kDebugMode) {
       print(event);
     }
+
     setState(() {
       _steps = event.steps.toString();
     });
-  }
-
-  void onPedestrianStatusChanged(PedestrianStatus event) {
-    if (kDebugMode) {
-      print(event);
-    }
-    setState(() {
-      _status = event.status;
-    });
-  }
-
-  void onPedestrianStatusError(error) {
-    if (kDebugMode) {
-      print('onPedestrianStatusError: $error');
-    }
-    setState(() {
-      _status = 'Pedestrian Status not available';
-    });
-    if (kDebugMode) {
-      print(_status);
-    }
   }
 
   void onStepCountError(error) {
@@ -64,11 +58,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void initPlatformState() {
-    _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
-    _pedestrianStatusStream
-        .listen(onPedestrianStatusChanged)
-        .onError(onPedestrianStatusError);
-
     _stepCountStream = Pedometer.stepCountStream;
     _stepCountStream.listen(onStepCount).onError(onStepCountError);
 
@@ -108,26 +97,6 @@ class _HomePageState extends State<HomePage> {
               thickness: 0,
               color: Colors.white,
             ),
-            const Text(
-              'Satut d\'activité',
-              style: TextStyle(fontSize: 30),
-            ),
-            Icon(
-              _status == 'marche'
-                  ? Icons.directions_walk
-                  : _status == 'no'
-                      ? Icons.accessibility_new
-                      : Icons.error,
-              size: 100,
-            ),
-            Center(
-              child: Text(
-                _status,
-                style: _status == 'marche' || _status == 'no'
-                    ? const TextStyle(fontSize: 30)
-                    : const TextStyle(fontSize: 20, color: Colors.red),
-              ),
-            )
           ],
         ),
       ),
