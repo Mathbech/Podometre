@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "223048221892",
+    "project_id": "scorebad-b5050",
+    "storage_bucket": "scorebad-b5050.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223048221892:android:1c97ab8a501378861af591",
+        "android_client_info": {
+          "package_name": "com.example.bts_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIZ84NdiL5OLy3OAmkbe9bDWddRcxVkbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

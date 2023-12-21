@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.6.0
+  health: ^8.1.0
   pedometer: ^4.0.1
   shared_preferences: ^2.2.2
   upgrade: ^0.0.8

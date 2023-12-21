@@ -38,6 +38,8 @@ class _HomePageState extends State<HomePage> {
     scheduleDailyReset(resetSteps);
   }
 
+  
+
   void onStepCount(StepCount event) {
     if (kDebugMode) {
       print(event);

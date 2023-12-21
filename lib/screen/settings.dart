@@ -16,7 +16,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Podomètre'),
+        title: const Text('Paramètres'),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
