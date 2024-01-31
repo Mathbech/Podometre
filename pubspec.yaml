@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.6.0
-  health: ^8.1.0
   pedometer: ^4.0.1
   permission_handler: ^11.1.0
   shared_preferences: ^2.2.2
@@ -20,7 +19,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true

@@ -20,12 +20,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late Stream<StepCount> _stepCountStream;
   String _steps = '0';
-  late DateTime _lastResetDate;
 
   @override
   void initState() {
     super.initState();
-    _lastResetDate = DateTime.now();
     initPlatformState();
     scheduleDailyReset(resetSteps);
   }
@@ -33,7 +31,6 @@ class _HomePageState extends State<HomePage> {
   void resetSteps() {
     setState(() {
       _steps = '0';
-      _lastResetDate = DateTime.now();
     });
     scheduleDailyReset(resetSteps);
   }

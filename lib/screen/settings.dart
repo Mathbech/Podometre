@@ -2,7 +2,7 @@ import 'package:bts_app/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   static const String routeName = '/settings';
 
@@ -29,7 +29,10 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: Center(
         child: CustomButton(text: 'Définir l\'objectif', onPressed: () {
-          const SnackBar(content: Text('Objectif défini avec succès !'));
+          ScaffoldMessenger.of(context).showSnackBar(
+
+          const SnackBar(content: Text('Objectif défini avec succès !'))
+          );
         }),
       ),
     );
